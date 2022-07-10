@@ -1,29 +1,30 @@
-import Document, { Html, Head, Main, NextScript } from "next/document";
+import Document, { Head, Main, NextScript } from 'next/document';
+import { ServerStyleSheet } from 'styled-components';
 
-class MyDocument extends Document {
+export default class MyDocument extends Document {
+    static getInitialProps({ renderPage }) {
+        const sheet = new ServerStyleSheet();
+
+        function handleCollectStyles(App) {
+            return props => {
+                return sheet.collectStyles(<App {...props} />);
+            };
+        }
+
+        const page = renderPage(App => handleCollectStyles(App));
+        const styleTags = sheet.getStyleElement();
+        return { ...page, styleTags };
+    }
+
     render() {
         return (
-            <Html>
-                <Head>
-                    {/* Font */}
-                    <link rel="preconnect" href="https://fonts.googleapis.com" />
-                    <link
-                        rel="preconnect"
-                        href="https://fonts.gstatic.com"
-                        crossOrigin="true"
-                    />
-                    <link
-                        href="https://fonts.googleapis.com/css2?family=Robot:wght@300;400;500;700;800&display=swap"
-                        rel="stylesheet"
-                    ></link>
-                </Head>
+            <html>
+                <Head>{this.props.styleTags}</Head>
                 <body>
                     <Main />
                     <NextScript />
                 </body>
-            </Html>
+            </html>
         );
     }
 }
-
-export default MyDocument;
