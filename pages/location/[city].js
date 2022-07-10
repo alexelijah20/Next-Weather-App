@@ -74,7 +74,7 @@ const getHourlyWeather = (hourlyData, timezone) => {
 }
 
 
-export default function City({ hourlyWeather, currentWeather, dailyWeather, city, timezone }) {
+export default function City({ hourlyWeather, dailyWeather, city, timezone }) {
 
 
     return (
