@@ -4,7 +4,7 @@ import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
 body {
-  font-family: "Nunito", sans-serif;
+  font-family: "Roboto", sans-serif;
   color: #242424;
   margin: 0;
 }
@@ -18,7 +18,7 @@ body {
 }
 
 #nprogress .bar {
-  background: #C41E3A;
+  background: #0B0A07;
 
   position: fixed;
   z-index: 1031;
@@ -30,3 +30,4 @@ body {
 }
 `
 
+export default GlobalStyle

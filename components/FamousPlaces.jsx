@@ -41,7 +41,7 @@ export default function FamousPlaces() {
                         <Link href={place.url}>
                             <PlacesAnchorTag>
                                 <PlacesImagesWrapper>
-                                    <Image src={place.image} alt={`${place.name} Image`} style={{ transition: "all 0.3s ease" }} layout="fill" objectFit='cover' />
+                                    <Image src={place.image} alt={`${place.name} Image`} layout="fill" objectFit="cover" />
                                 </PlacesImagesWrapper>
 
                                 <PlacesSpan>{place.name}</PlacesSpan>

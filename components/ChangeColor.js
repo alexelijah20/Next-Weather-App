@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from "react-redux"
 import { changeColor } from "../features/theme"
+import { ReduxButton, ReduxInput, ReduxWrapper } from '../styles/layout.style'
 
 export default function ChangeColor() {
 
@@ -8,9 +9,9 @@ export default function ChangeColor() {
     const dispatch = useDispatch()
 
     return (
-        <div>
-            <input type="text" onChange={(e) => setColor(e.target.value)} />
-            <button onClick={() => { dispatch(changeColor(color)) }}>Change Color</button>
-        </div>
+        <ReduxWrapper>
+            <ReduxInput type="text" onChange={(e) => setColor(e.target.value)} placeholder="Change background color using redux.." />
+            <ReduxButton onClick={() => { dispatch(changeColor(color)) }}>Change Color</ReduxButton>
+        </ReduxWrapper>
     )
 }

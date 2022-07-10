@@ -26,10 +26,9 @@ export const SearchInput = styled.input`
     width: 100%;
     padding: 15px 15px;
     border-radius: 10px;
-    border: 2px solid #C41E3A;
+    border: 2px solid #F0EC57;
     font-size: 1.25rem;
-    color: #242424;
-    font-family: "Nunito", sans-serif;
+    color: #0B0A07;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
 
@@ -42,7 +41,7 @@ export const SlugList = styled.ul`
     padding: 5px 15px;
     margin: 0;
     list-style: none;
-    border: 2px solid #C41E3A;
+    border: 2px solid #F0EC57;
     border-radius: 10px;
     z-index: 100;
     background-color: #fff;
@@ -68,14 +67,16 @@ export const AnchorTag = styled.a`
         width: 100%;
         padding: 10px 0;
 
-        :hover {
-          color: #C41E3A;
+        &:hover {
+          color: #0B0A07;
+          font-weight: 600;
+          	
         }
       
 `
 
 export const PlacesWrapper = styled.div`
-        margin-top: 30px;
+        margin-top: 50px;
         cursor: pointer;
 `
 
@@ -117,9 +118,9 @@ export const PlacesAnchorTag = styled.a`
 `
 
 export const TodayWrapper = styled.div`
-    background-color: #C41E3A;
+    background-color: #F0EC57;
     border-radius: 10px;
-    color: #fff;
+    color: #0B0A07;
     margin-top: 20px;
 `
 
@@ -128,13 +129,14 @@ export const TodayInnerWrapper = styled.div`
     justify-content: space-between;
     align-items: center;
     padding: 30px 30px;
+    font-weight: 600;
 `
 
 export const AnchorHomeLink = styled.a`
     display: inline-block;
     text-decoration: none;
-    color: #C41E3A;
-    font-weight: 500;
+    color: #0B0A07;
+    font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
     margin-bottom: 15px;
@@ -202,6 +204,7 @@ export const HourlyWrapper = styled.div`
 
 export const HourlyInner = styled.div`
     display: flex;
+    font-weight: 600;
 `
 
 export const HourlyBoxWrapper = styled.div`
@@ -216,8 +219,8 @@ export const HourlyBoxInner = styled.div`
     text-align: center;
     border-radius: 5px;
     padding: 10px;
-    background-color: #C41E3A;
-    color: #fff;
+    background-color: #E3D87E;
+    color: #0B0A07;
 `
 
 export const WeeklyWrapper = styled.div`
@@ -231,9 +234,9 @@ export const WeeklyTitle = styled.h3`
 `
 
 export const WeeklyCard = styled.div`
-    background-color: green;
+    background-color: #BBCEA8;
     border-radius: 10px;
-    color: #FFF;
+    color: #0B0A07;
         :not(:last-child) {
         margin-bottom: 15px;
     }
@@ -306,4 +309,34 @@ export const WeeklyH4 = styled.h4`
         opacity: .7;
     }
 }
+`
+
+export const ReduxWrapper = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+`
+
+export const ReduxInput = styled.input`
+    width: 50%;
+    padding: 10px 10px;
+    border-radius: 10px;
+    border: 2px solid #E3D87E;
+    font-size: 1.1rem;
+    color: #0B0A07;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+`
+
+export const ReduxButton = styled.button`
+        background-color: #BB342F; 
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-decoration: none;
+        font-size: 16px;
+        border-radius: 10px;
+        font-weight: 700;
+        cursor: pointer;
 `
