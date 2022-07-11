@@ -7,6 +7,10 @@ import WeeklyWeather from "../../components/WeeklyWeather"
 import SearchBox from "../../components/SearchBox"
 import Link from "next/link"
 import { AnchorHomeLink, Container, PageWrapper } from "../../styles/layout.style"
+import { useSession } from 'next-auth/react'
+import AccessDenied from "../../components/AccessDenied"
+
+
 
 export async function getServerSideProps(context) {
     const city = getCity(context.params.city)
@@ -76,14 +80,28 @@ const getHourlyWeather = (hourlyData, timezone) => {
 
 export default function City({ hourlyWeather, dailyWeather, city, timezone }) {
 
+    const { data: session, status } = useSession();
+
+    if (status === "loading") {
+        return <p>Loading..</p>
+    }
+
+    if (status === "unauthenticated") {
+        return <AccessDenied />
+    }
+
+
+
+
 
     return (
         <>
+
             <Head>
                 <title>{city.name} Weather</title>
             </Head>
-
             <PageWrapper>
+
                 <Container>
                     <Link href="/">
                         <AnchorHomeLink>&larr; Home</AnchorHomeLink>
@@ -93,7 +111,8 @@ export default function City({ hourlyWeather, dailyWeather, city, timezone }) {
                     <HourlyWeather hourlyWeather={hourlyWeather} timezone={timezone} />
                     <WeeklyWeather weeklyWeather={dailyWeather} timezone={timezone} />
                 </Container>
-            </PageWrapper>
+            </PageWrapper >
+
         </>
     )
 }

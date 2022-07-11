@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import cities from "../lib/city.list.json"
-import Link from "next/link"
 import Router from "next/router"
 import { SearchInput } from '../styles/layout.style'
 import { SlugList } from "../styles/layout.style"
@@ -10,21 +9,25 @@ import { AnchorTag } from "../styles/layout.style"
 
 
 export default function SearchBox({ placeholder }) {
+
     const [query, setQuery] = useState("")
     const [results, setResults] = useState([])
 
+    const clearQuery = () => setQuery('')
 
     // CLEAR QUERY
+
     useEffect(() => {
-        const clearQuery = () => setQuery("")
 
         Router.events.on("routeChangeComplete", clearQuery)
 
         return () => {
             Router.events.off("routeChangeComplete", clearQuery)
-
         }
+
     }, [])
+
+
 
     const onChange = (e) => {
         const { value } = e.target;
@@ -47,13 +50,42 @@ export default function SearchBox({ placeholder }) {
                         ...city,
                         slug: `${city.name.toLowerCase().replace(/ /g, "-")}-${city.id}`
                     }
-
                     matchingCities.push(cityData)
                 }
             }
         }
 
-        return setResults(matchingCities)
+        setResults(matchingCities)
+
+    }
+
+    const onChangeCity = city => {
+
+
+        // Initialize an empty list
+        let list = []
+
+        // Check if there is anything saved in the storage
+        if (localStorage.saved)
+            try {
+                // Parse the JSON from the Local Storage
+                list = JSON.parse(localStorage.saved)
+            } catch (err) {
+                // do nothing
+            }
+
+        // Try/Catch in case JSON from the localStorage.saved is not valid
+        // So it won' crash
+
+        // Overwrite localStorage.saved as a JSON from a new list
+
+        //  Where we put the actual city, followed by the last 3 cities from the LocalStorage
+        localStorage.setItem("saved", JSON.stringify([city.name, ...list.slice(0, 3)]))
+
+        // Redurect to the chosen location
+        Router.push(`/location/${city.slug}`)
+
+
     }
 
 
@@ -66,21 +98,22 @@ export default function SearchBox({ placeholder }) {
                     {results.length > 0 ? (
                         results.map((city) => (
                             <SlugItem key={city.slug}>
-                                <Link href={`/location/${city.slug}`}>
-                                    <AnchorTag href="">
+                                <div onClick={() => onChangeCity(city)}>
+                                    <AnchorTag href={`/location/${city.slug}`}>
                                         {city.name}
                                         {city.state ? `, ${city.state} ` : ""}{" "}
                                         <span>({city.country})</span>
                                     </AnchorTag>
-                                </Link>
+                                </div>
                             </SlugItem>
                         ))
                     ) : (
                         <li style={{ padding: "15px 0" }}>No result</li>
                     )}
                 </SlugList>
-            )}
-        </div>
+            )
+            }
+        </div >
     )
 }
 
