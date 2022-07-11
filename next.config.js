@@ -5,7 +5,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ["openweathermap.org"],
+    domains: ["openweathermap.org", "lh3.googleusercontent.com", "placehold.co"]
   }
 }
 
