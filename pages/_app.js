@@ -3,8 +3,10 @@ import Router from "next/router"
 import NProgress from "nprogress"
 import { GlobalStyle } from "../styles/globalStyles"
 import { configureStore } from "@reduxjs/toolkit"
-import { Provider } from "react-redux"
 import themeReducer from "../features/theme"
+import { Provider } from "react-redux"
+import { SessionProvider } from "next-auth/react"
+
 
 const store = configureStore({
   reducer: {
@@ -34,10 +36,12 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-      <Provider store={store}>
-        <GlobalStyle />
-        <Component {...pageProps} />
-      </Provider>
+      <SessionProvider session={pageProps.session}>
+        <Provider store={store}>
+          <GlobalStyle />
+          <Component {...pageProps} />
+        </Provider>
+      </SessionProvider>
     </>
   )
 }

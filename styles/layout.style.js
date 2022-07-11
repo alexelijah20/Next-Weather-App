@@ -101,12 +101,13 @@ export const PlacesImagesWrapper = styled.div`
     margin-bottom: 10px;
 `
 
-export const PlacesSpan = styled.span`
+export const PlacesTitle = styled.div`
         text-decoration: none;
         font-weight: 600;
         color: #242424;
         font-size: 1.25rem;
         opacity: 0.9;
+        text-align: center;
         transition: all 0.3s ease;
 `
 
@@ -339,4 +340,37 @@ export const ReduxButton = styled.button`
         border-radius: 10px;
         font-weight: 700;
         cursor: pointer;
+`
+
+export const AccessDeniedWrapper = styled.div`
+      display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+`
+
+export const AccessDeniedInner = styled.div`
+    display: flex;
+    flex-direction: column;
+
+`
+
+export const ButtonsWrapper = styled.div`
+    display: flex;
+    margin-top: 40px;
+    align-items: center;
+    justify-content: space-between;
+`
+
+export const AnchorSignOut = styled.a`
+    background-color: #BB342F;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
 `
